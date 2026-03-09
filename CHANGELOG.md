@@ -15,8 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add AgentCreation type
 - Add AgentInvocation type
-- Add Tool type
-
 
 ### Fixed
 
