@@ -23,8 +23,11 @@ from opentelemetry.semconv._incubating.attributes import (
 )
 from opentelemetry.semconv.attributes import server_attributes
 from opentelemetry.trace import INVALID_SPAN, Span, SpanKind, Tracer
-from opentelemetry.util.genai._content import _get_content_attributes
-from opentelemetry.util.genai._invocation import Error, GenAIInvocation
+from opentelemetry.util.genai._invocation import (
+    Error,
+    GenAIInvocation,
+    get_content_attributes,
+)
 from opentelemetry.util.genai.metrics import InvocationMetricsRecorder
 from opentelemetry.util.genai.types import (
     InputMessage,
@@ -118,7 +121,7 @@ class InferenceInvocation(GenAIInvocation):
         self._start()
 
     def _get_message_attributes(self, *, for_span: bool) -> dict[str, Any]:
-        return _get_content_attributes(
+        return get_content_attributes(
             input_messages=self.input_messages,
             output_messages=self.output_messages,
             system_instruction=self.system_instruction,
